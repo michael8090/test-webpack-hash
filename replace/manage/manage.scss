@@ -1,0 +1,288 @@
+@import "../component";
+
+@font-face {
+  font-family: 'iconfont';
+  src: url('//at.alicdn.com/t/font_1473824629_1909523.eot'); /* IE9*/
+  src: url('//at.alicdn.com/t/font_1473824629_1909523.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('//at.alicdn.com/t/font_1473824629_1909523.woff') format('woff'), /* chrome、firefox */
+  url('//at.alicdn.com/t/font_1473824629_1909523.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('//at.alicdn.com/t/font_1473824629_1909523.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.icon-font {
+    font-family: iconfont;
+}
+
+@mixin icon($url) {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: $url;
+}
+
+#content {
+    padding: 10px;
+}
+
+.replace-manage {
+    font: 12px/1.5 "Lantinghei SC","Microsoft YaHei","微软雅黑",Tahoma,Arial,\5b8b\4f53,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: white;
+    box-sizing: border-box;
+    padding: 20px;
+    width: 100%;
+    height: 958px;
+    border: solid 1px #EBEBEB;
+    color: #333333;
+
+    .button {
+        @extend %button;
+    }
+
+    .header {
+        height: 65px;
+        border-bottom: solid 1px #EBEBEB;
+
+        .design-name {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .info-tag {
+            margin-top: 9px;
+            color: #666666;
+            font-size: 13px;
+
+            label {
+                display: inline-block;
+                $height: 18px;
+                height: $height;
+                line-height: $height;
+                padding: 0 10px;
+
+                &:first-child {
+                    padding-left: 0;
+                }
+
+                &:not(:last-child) {
+                    border-right: solid 1px #DDDDDD;
+                }
+            }
+        }
+
+        .buttons {
+            float: right;
+            position: relative;
+            top: 5px;
+
+            .button {
+                display: inline-block;
+                margin-left: 12px;
+            }
+
+            .tooltip {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translate(-50%, 10px);
+                background: #FFFFFF;
+                border: 1px solid $blue;
+                box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.20);
+                font-size: 13px;
+                color: #333333;
+                padding: 12px;
+                width: 206px;
+                z-index: 10;
+                line-height: 1.8;
+                cursor: auto;
+
+                &:before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    left: 50%;
+                    bottom: 100%;
+                    margin-bottom: -5px;
+                    transform: rotateZ(45deg);
+                    border: solid 1px $blue;
+                    border-right: none;
+                    border-bottom: none;
+                    width: 10px;
+                    height: 10px;
+                    background: white;
+                }
+
+                // no tracing game
+                &:after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    bottom: 100%;
+                    width: 100%;
+                    height: 20px;
+                    opacity: 0;
+                }
+            }
+
+            .create-replacement.button-disabled:hover {
+                .tooltip {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .pic-gallery {
+        margin-top: 20px;
+        overflow: hidden;
+        font-size: 0;
+
+        .picture {
+            font-size: 12px;
+            display: inline-block;
+            width: 280px;
+            height: 260px;
+            box-sizing: border-box;
+            border: solid 1px #EBEBEB;
+            margin: 0 20px 20px 0;
+            vertical-align: top;
+
+            .content {
+                height: 210px;
+                position: relative;
+
+                .tags {
+                    position: absolute;
+                    left: 15px;
+                    top: 10px;
+
+                    .tag {
+                        $height: 20px;
+
+                        display: inline-block;
+                        width: 40px;
+                        height: $height;
+                        line-height: $height;
+                        text-align: center;
+                        background: rgba(0, 0, 0, 0.6);
+                        color: white;
+                        font-size: 12px;
+                    }
+                }
+
+                img {
+                    width: 100%;
+                }
+
+                .delete-button {
+                    @include icon(url('http://qhyxpic.oss.kujiale.com/2016/08/24/K66YTKQKAEBKMM4MAAAAAAA8_14x14.png'));
+
+                    display: none;
+                    cursor: pointer;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    background-color: rgba(0, 0, 0, 0.6);
+                    width: 15px;
+                    height: 15px;
+                }
+
+                .toolbox {
+                    display: none;
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+
+                    .tool-button {
+                        display: inline-block;
+                        $height: 40px;
+                        height: $height;
+                        line-height: $height;
+                        width: 50%;
+                        text-align: center;
+                        color: white;
+                        font-size: 14px;
+                        background: rgba(0, 0, 0, 0.5);
+                        cursor: pointer;
+
+                        &:first-child {
+                            box-sizing: border-box;
+                            border-right: solid 1px rgba(255, 255, 255, 0.2);
+                        }
+                    }
+                }
+
+                &:hover {
+                    .delete-button, .toolbox {
+                        display: block;
+                    }
+                }
+            }
+
+            .info {
+                padding: 15px;
+
+                .name {
+                    line-height: 20px;
+                    //padding: 15px;
+                    font-size: 16px;
+                    color: #333333;
+                    font-weight: 500;
+                }
+
+                .time {
+                    font-size: 12px;
+                    color: #CCCCCC;
+                    float: right;
+                }
+            }
+        }
+
+        .hint {
+            border: dashed 1px #CCCCCC;
+            border-radius: 2px;
+            position: relative;
+            height: 574px;
+
+            .hint-content {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+
+                .empty-icon {
+                    @include icon(url('http://qhyxpic.oss.kujiale.com/2016/09/13/K7L5KDYKAEDGUONQAAAAAAQ8_50x52.png'));
+                    width: 50px;
+                    height: 50px;
+                }
+
+                .hint-title {
+                    margin-top: 24px;
+                    font-size: 18px;
+                    color: #333;
+                    line-height: 22px;
+                }
+
+                .hint-text {
+                    font-size: 14px;
+                    color: #999;
+                    margin-top: 10px;
+                }
+
+                .hint-buttons {
+                    margin-top: 41px;
+
+                    .button {
+                        margin-right: 12px;
+                        min-width: 132px;
+                    }
+                }
+            }
+        }
+    }
+}
